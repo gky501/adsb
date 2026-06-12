@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>ADS-B Custom Viewer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIINfQ68urFtc7v2KdU4hf9MZ1VChJ+1QOk="
+    crossorigin=""
+  />
+
+  <link rel="stylesheet" href="./styles/main.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">✈</div>
+        <div>
+          <h1>ADS-B Viewer</h1>
+          <p>Live aircraft from your feeder</p>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <div class="pill" id="feedStatus">Connecting…</div>
+        <div class="pill muted" id="lastUpdated">Waiting for data</div>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="map-wrap">
+        <div id="map"></div>
+
+        <div class="map-overlay">
+          <div>
+            <span class="metric-label">Aircraft</span>
+            <strong id="aircraftCount">0</strong>
+          </div>
+          <div>
+            <span class="metric-label">With position</span>
+            <strong id="positionCount">0</strong>
+          </div>
+          <div>
+            <span class="metric-label">Refresh</span>
+            <strong id="refreshRate">10s</strong>
+          </div>
+        </div>
+      </section>
+
+      <aside class="sidebar">
+        <section class="panel">
+          <div class="panel-header">
+            <div>
+              <h2>Live Traffic</h2>
+              <p>Aircraft currently seen by your feeder</p>
+            </div>
+          </div>
+
+          <div class="search-row">
+            <input id="searchBox" type="search" placeholder="Search callsign or hex…" />
+          </div>
+
+          <div class="aircraft-list" id="aircraftList">
+            <div class="empty-state">
+              Waiting for aircraft data…
+            </div>
+          </div>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin="">
+  </script>
+
+  <script src="./src/config.js"></script>
+  <script src="./src/app.js"></script>
+</body>
+</html>
